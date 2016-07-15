@@ -3,7 +3,7 @@ a BadeView  base on android
 
 include:
 
-      compile 'com.allenliu.badgeview:library:1.0.1'
+      compile 'com.allenliu.badgeview:library:1.0.2'
 use like this:
 
     BadgeFactory.create(this)
