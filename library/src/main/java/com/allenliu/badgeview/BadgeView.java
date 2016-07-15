@@ -173,8 +173,9 @@ public class BadgeView extends View {
 
             FrameLayout container=new FrameLayout(getContext());
             ViewGroup.LayoutParams containerParams=view.getLayoutParams();
-
             container.setLayoutParams(containerParams);
+             container.setId(view.getId());
+            
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             container.addView(view);
             container.addView(this);
