@@ -3,7 +3,7 @@ a BadeView  base on android
 
 include:
 
-      compile 'com.allenliu.badgeview:library:1.0.2'
+      compile 'com.allenliu.badgeview:library:1.0.3'
 use like this:
 
     BadgeFactory.create(this)
@@ -14,3 +14,6 @@ use like this:
     .setBadgeGravity(Gravity.Right|Gravity.Top)
     .setBadgeCount(20)
     .bind(view);
+    
+newest version:1.0.3.
+update:add `unbind`method,and set default value such as width eg.
