@@ -53,5 +53,5 @@ welecome to star,thank you.
 
 ###history version
   *v1.0.5  
-  add `setMargin`method,using this method you can change the position of badgeview,but the width or the height will be changed.see image effect.
+  add `setMargin`method,using this method you can change the position of badgeview,but the width of bindview or the height of bindview will be changed.see image effect.
   ***
