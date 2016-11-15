@@ -38,7 +38,10 @@ public class BadgeView extends View {
     private int defaultBackgroundColor = Color.RED;
     private String showText = "";
     private int badgeGravity = Gravity.RIGHT | Gravity.TOP;
-
+    private int leftMargin=0;
+    private int topMargin=0;
+    private int bottomMargin=0;
+    private int rightMargin=0;
     public BadgeView(Context context) {
         super(context);
         init(context);
@@ -213,7 +216,22 @@ public class BadgeView extends View {
         invalidate();
         return this;
     }
-
+    /**
+     * set bindview margin that you can change badges positon,
+     * but if you set margin ,the width of view or height of view will be changed
+     * @param left  the unit is dip
+     * @param top
+     * @param right
+     * @param bottom
+     * @return
+     */
+    public BadgeView setMargin(int left,int top,int right,int bottom){
+        leftMargin=dip2px(getContext(),left);
+        bottomMargin=dip2px(getContext(),bottom);
+        topMargin=dip2px(getContext(),top);
+        rightMargin=dip2px(getContext(),right);
+        return  this;
+    }
     /**
      * set gravity must be before @link bind() method
      *
@@ -241,9 +259,20 @@ public class BadgeView extends View {
             ((ViewGroup) view.getParent()).removeView(view);
             FrameLayout container = new FrameLayout(getContext());
             ViewGroup.LayoutParams containerParams = view.getLayoutParams();
+
+            int beforeWidth=containerParams.width;
+            int beforeHeight=containerParams.height;
+            containerParams.width=containerParams.width+leftMargin+rightMargin;
+            containerParams.height=containerParams.height+topMargin+bottomMargin;
             container.setLayoutParams(containerParams);
             container.setId(view.getId());
-            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            FrameLayout.LayoutParams newViewParams=new FrameLayout.LayoutParams(beforeWidth, beforeHeight);
+            newViewParams.leftMargin=leftMargin;
+            newViewParams.topMargin=topMargin;
+            newViewParams.rightMargin=rightMargin;
+            newViewParams.bottomMargin=bottomMargin;
+            view.setLayoutParams(newViewParams);
+
             container.addView(view);
             container.addView(this);
             parentContainer.addView(container, viewIndex);
