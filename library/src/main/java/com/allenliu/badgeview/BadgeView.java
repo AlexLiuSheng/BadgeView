@@ -42,6 +42,8 @@ public class BadgeView extends View {
     private int topMargin=0;
     private int bottomMargin=0;
     private int rightMargin=0;
+    private boolean isBind=false;
+
     public BadgeView(Context context) {
         super(context);
         init(context);
@@ -251,7 +253,7 @@ public class BadgeView extends View {
             ((ViewGroup) getParent()).removeView(this);
         if (view == null)
             return this;
-        if (view.getParent() instanceof FrameLayout) {
+        if (view.getParent() instanceof FrameLayout&&isBind==true) {
             ((FrameLayout) view.getParent()).addView(this);
         } else if (view.getParent() instanceof ViewGroup) {
             ViewGroup parentContainer = (ViewGroup) view.getParent();
@@ -272,10 +274,10 @@ public class BadgeView extends View {
             newViewParams.rightMargin=rightMargin;
             newViewParams.bottomMargin=bottomMargin;
             view.setLayoutParams(newViewParams);
-
             container.addView(view);
             container.addView(this);
             parentContainer.addView(container, viewIndex);
+            isBind=true;
         } else if (view.getParent() == null) {
             Log.e("badgeview", "View must have a parent");
         }
