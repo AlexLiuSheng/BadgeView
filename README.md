@@ -5,7 +5,7 @@ a BadeView  base on android
 
 ##include:
 
-      compile 'com.allenliu.badgeview:library:1.0.5'
+      compile 'com.allenliu.badgeview:library:1.0.6'
 ##bind like this:
 
     BadgeFactory.create(this)
@@ -52,6 +52,6 @@ a BadeView  base on android
 welecome to star,thank you.
 
 ###history version
-  *v1.0.5  
+  *v1.0.6  
   add `setMargin`method,using this method you can change the position of badgeview,but the width of bindview or the height of bindview will be changed.see image effect.
   ***
