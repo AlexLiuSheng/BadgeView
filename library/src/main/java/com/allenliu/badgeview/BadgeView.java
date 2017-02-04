@@ -27,23 +27,24 @@ public class BadgeView extends View {
      * 背景Paint
      */
     private Paint backgroundPaint;
-    public static final int SHAPE_CIRCLE=1;
-    public static final int SHAPE_RECTANGLE=2;
-    public static final int SHAPE_OVAL=3;
-    public static final int SHAPTE_ROUND_RECTANGLE=4;
-    public static final int SHAPE_SQUARE=5;
-    private  int currentShape=SHAPE_CIRCLE;
+    public static final int SHAPE_CIRCLE = 1;
+    public static final int SHAPE_RECTANGLE = 2;
+    public static final int SHAPE_OVAL = 3;
+    public static final int SHAPTE_ROUND_RECTANGLE = 4;
+    public static final int SHAPE_SQUARE = 5;
+    private int currentShape = SHAPE_CIRCLE;
     private int defaultTextColor = Color.WHITE;
     private int defaultTextSize;
     private int defaultBackgroundColor = Color.RED;
     private String showText = "";
     private int badgeGravity = Gravity.RIGHT | Gravity.TOP;
-    private int leftMargin=0;
-    private int topMargin=0;
-    private int bottomMargin=0;
-    private int rightMargin=0;
-    private boolean isBind=false;
-
+    private int leftMargin = 0;
+    private int topMargin = 0;
+    private int bottomMargin = 0;
+    private int rightMargin = 0;
+    private boolean hasBind=false;
+    private int horiontalSpace=0;
+    private int verticalSpace=0;
     public BadgeView(Context context) {
         super(context);
         init(context);
@@ -82,43 +83,38 @@ public class BadgeView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        //  int w = MeasureSpec.getSize(widthMeasureSpec);
-        //   int h = MeasureSpec.getSize(heightMeasureSpec);
-        // int size = w > h ? h : w;
-        // int measure = MeasureSpec.makeMeasureSpec(size, MeasureSpec.AT_MOST);
-        // super.onMeasure(measure, measure);
-        super.onMeasure(widthMeasureSpec,heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        RectF rectF=new RectF(0,0,getMeasuredWidth(),getMeasuredHeight());
+        RectF rectF = new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight());
         Paint.FontMetrics fontMetrics = numberPaint.getFontMetrics();
         float textH = fontMetrics.descent - fontMetrics.ascent;
-        switch(currentShape){
+        switch (currentShape) {
             case SHAPE_CIRCLE:
                 canvas.drawCircle(getMeasuredWidth() / 2f, getMeasuredHeight() / 2f, getMeasuredWidth() / 2, backgroundPaint);
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
             case SHAPE_OVAL:
 
-                canvas.drawOval(rectF,backgroundPaint);
+                canvas.drawOval(rectF, backgroundPaint);
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
             case SHAPE_RECTANGLE:
-                canvas.drawRect(rectF,backgroundPaint);
+                canvas.drawRect(rectF, backgroundPaint);
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
             case SHAPE_SQUARE:
-                int sideLength= Math.min(getMeasuredHeight(),getMeasuredWidth());
-                RectF squareF=new RectF(0,0,sideLength,sideLength);
-                canvas.drawRect(squareF,backgroundPaint);
-                canvas.drawText(showText, sideLength/ 2f, sideLength / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
+                int sideLength = Math.min(getMeasuredHeight(), getMeasuredWidth());
+                RectF squareF = new RectF(0, 0, sideLength, sideLength);
+                canvas.drawRect(squareF, backgroundPaint);
+                canvas.drawText(showText, sideLength / 2f, sideLength / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
             case SHAPTE_ROUND_RECTANGLE:
-                canvas.drawRoundRect(rectF,dip2px(getContext(),5),dip2px(getContext(),5),backgroundPaint);
+                canvas.drawRoundRect(rectF, dip2px(getContext(), 5), dip2px(getContext(), 5), backgroundPaint);
                 canvas.drawText(showText, getMeasuredWidth() / 2f, getMeasuredHeight() / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
         }
@@ -128,16 +124,18 @@ public class BadgeView extends View {
     private int dip2px(Context context, int dip) {
         return (int) (dip * getContext().getResources().getDisplayMetrics().density + 0.5f);
     }
-    private  int sp2px(Context context, float spValue) {
+
+    private int sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 
-    public BadgeView setShape(int shape){
-        currentShape=shape;
+    public BadgeView setShape(int shape) {
+        currentShape = shape;
         invalidate();
         return this;
     }
+
     /**
      * @param w dip
      * @param h dip this unit is dip
@@ -152,7 +150,6 @@ public class BadgeView extends View {
     }
 
     /**
-     *
      * @param sp dip
      * @return
      */
@@ -172,8 +169,39 @@ public class BadgeView extends View {
     }
 
     /**
+     * set bindview margin that you can change badges positon
      *
-     * @param sp  the unit is sp
+     * @param left   the unit is dip
+     * @param top
+     * @param right
+     * @param bottom
+     * @return
+     *
+     */
+    @Deprecated
+    public BadgeView setMargin(int left, int top, int right, int bottom) {
+        leftMargin = dip2px(getContext(), left);
+        bottomMargin = dip2px(getContext(), bottom);
+        topMargin = dip2px(getContext(), top);
+        rightMargin = dip2px(getContext(), right);
+        invalidate();
+        return this;
+    }
+
+    /**
+     *
+     * @param horitontal  horitontal space  unit dp
+     * @param vertical    vertical space unnit dp
+     * @return
+     */
+    public BadgeView setSpace(int horitontal, int vertical){
+        horiontalSpace=dip2px(getContext(), horitontal);
+        verticalSpace=dip2px(getContext(), vertical);
+        invalidate();
+        return  this;
+    }
+    /**
+     * @param sp the unit is sp
      * @return
      */
     public BadgeView setTextSize(int sp) {
@@ -197,42 +225,16 @@ public class BadgeView extends View {
         return this;
     }
 
-    /**
-     * if shape is dot ,func is not effect
-     * @param count
-     * @return
-     */
     public BadgeView setBadgeCount(int count) {
         showText = String.valueOf(count);
         invalidate();
         return this;
     }
 
-    /**
-     * if shape is dot ,func is not effect
-     * @param count
-     * @return
-     */
     public BadgeView setBadgeCount(String count) {
         showText = count;
         invalidate();
         return this;
-    }
-    /**
-     * set bindview margin that you can change badges positon,
-     * but if you set margin ,the width of view or height of view will be changed
-     * @param left  the unit is dip
-     * @param top
-     * @param right
-     * @param bottom
-     * @return
-     */
-    public BadgeView setMargin(int left,int top,int right,int bottom){
-        leftMargin=dip2px(getContext(),left);
-        bottomMargin=dip2px(getContext(),bottom);
-        topMargin=dip2px(getContext(),top);
-        rightMargin=dip2px(getContext(),right);
-        return  this;
     }
     /**
      * set gravity must be before @link bind() method
@@ -253,31 +255,59 @@ public class BadgeView extends View {
             ((ViewGroup) getParent()).removeView(this);
         if (view == null)
             return this;
-        if (view.getParent() instanceof FrameLayout&&isBind==true) {
+        if ((view.getParent() instanceof FrameLayout)&&hasBind==true) {
             ((FrameLayout) view.getParent()).addView(this);
+            return this;
         } else if (view.getParent() instanceof ViewGroup) {
             ViewGroup parentContainer = (ViewGroup) view.getParent();
             int viewIndex = ((ViewGroup) view.getParent()).indexOfChild(view);
             ((ViewGroup) view.getParent()).removeView(view);
             FrameLayout container = new FrameLayout(getContext());
             ViewGroup.LayoutParams containerParams = view.getLayoutParams();
-
-            int beforeWidth=containerParams.width;
-            int beforeHeight=containerParams.height;
-            containerParams.width=containerParams.width+leftMargin+rightMargin;
-            containerParams.height=containerParams.height+topMargin+bottomMargin;
+            int origionHeight=containerParams.height;
+            int origionWidth=containerParams.width;
+            FrameLayout.LayoutParams viewLayoutParams =new FrameLayout.LayoutParams( origionWidth, origionHeight);
+            if(origionHeight==ViewGroup.LayoutParams.WRAP_CONTENT){
+                containerParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                viewLayoutParams.topMargin=topMargin;
+                viewLayoutParams.bottomMargin=bottomMargin;
+            }else{
+                containerParams.height =origionHeight+topMargin+bottomMargin+verticalSpace;
+            }
+            if(origionWidth==ViewGroup.LayoutParams.WRAP_CONTENT){
+                containerParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+                viewLayoutParams.leftMargin=leftMargin;
+                viewLayoutParams.rightMargin=rightMargin;
+            }else{
+                containerParams.width=origionWidth+rightMargin+horiontalSpace+leftMargin;
+            }
             container.setLayoutParams(containerParams);
+
+            //setGravity
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
+            if(params.gravity==(Gravity.RIGHT|Gravity.TOP)||params.gravity==Gravity.RIGHT||params.gravity==Gravity.TOP){
+                view.setPadding(0,verticalSpace,horiontalSpace,0);
+                viewLayoutParams.gravity=Gravity.LEFT|Gravity.BOTTOM;
+            }else if(params.gravity==(Gravity.LEFT|Gravity.TOP)||params.gravity==Gravity.LEFT||params.gravity==Gravity.TOP){
+                view.setPadding(horiontalSpace,verticalSpace,0,0);
+                viewLayoutParams.gravity=Gravity.RIGHT|Gravity.BOTTOM;
+            }else if(params.gravity==(Gravity.LEFT|Gravity.BOTTOM)){
+                view.setPadding(horiontalSpace,0,0,verticalSpace);
+                viewLayoutParams.gravity=Gravity.RIGHT|Gravity.TOP;
+            }else if(params.gravity==(Gravity.RIGHT|Gravity.BOTTOM)){
+                view.setPadding(0,0,horiontalSpace,verticalSpace);
+                viewLayoutParams.gravity=Gravity.LEFT|Gravity.TOP;
+            }else{
+                view.setPadding(0,verticalSpace,horiontalSpace,0);
+                viewLayoutParams.gravity=Gravity.LEFT|Gravity.BOTTOM;
+            }
+
+            view.setLayoutParams(viewLayoutParams);
             container.setId(view.getId());
-            FrameLayout.LayoutParams newViewParams=new FrameLayout.LayoutParams(beforeWidth, beforeHeight);
-            newViewParams.leftMargin=leftMargin;
-            newViewParams.topMargin=topMargin;
-            newViewParams.rightMargin=rightMargin;
-            newViewParams.bottomMargin=bottomMargin;
-            view.setLayoutParams(newViewParams);
             container.addView(view);
             container.addView(this);
             parentContainer.addView(container, viewIndex);
-            isBind=true;
+            hasBind=true;
         } else if (view.getParent() == null) {
             Log.e("badgeview", "View must have a parent");
         }
@@ -286,6 +316,10 @@ public class BadgeView extends View {
 
     public boolean unbind() {
         if (getParent() != null) {
+//            ViewGroup.LayoutParams layoutParams = ((ViewGroup)getParent()).getLayoutParams();
+//            layoutParams.width = layoutParams.width - leftMargin - rightMargin;
+//            layoutParams.height = layoutParams.height -topMargin - bottomMargin;
+//            ((ViewGroup)getParent()).setLayoutParams(layoutParams);
             ((ViewGroup) getParent()).removeView(this);
             return true;
         }
