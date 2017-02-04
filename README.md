@@ -18,6 +18,7 @@ a BadeView  base on android
     .setShape(BadgeView.SHAPE_CIRCLE)
     .setSpace(10,10)
     .bind(view);
+    
 if u want to set space dont use ~~setMargin()~~,use `setSpace` instead.
 ##There are some other constructer methods and you can easy to create your own shape :
 
