@@ -40,8 +40,7 @@ if u want to set space dont use ~~setMargin()~~,use `setSpace` instead.
   
   add `setSpace`method,it replace origin method `setMargin`.now `setMargin` is a Deprecated method.Use `setSpace` method to set space  between view and badgeview instead.
 
-
- ##License
+##License
         
         Copyright 2016 AllenLiu.
 
