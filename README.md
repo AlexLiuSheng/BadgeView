@@ -5,10 +5,10 @@ a BadeView  base on android
 
 ##include:
 
-      compile 'com.allenliu.badgeview:library:1.1.1'（newest）
+      `compile 'com.allenliu.badgeview:library:1.1.1'`（newest）
 ##bind like this:
 
-    BadgeFactory.create(this)
+     BadgeFactory.create(this)
     .setTextColor(Color.White)
     .setWidthAndHeight(25,25)
     .setBadgeBackground(Color.Red)
@@ -16,9 +16,9 @@ a BadeView  base on android
     .setBadgeGravity(Gravity.Right|Gravity.Top)
     .setBadgeCount(20)
     .setShape(BadgeView.SHAPE_CIRCLE)
-    .setSpace(10,10)
-    .bind(view);
-    
+    .setSpace(10,10)
+    .bind(view);
+     
 if u want to set space dont use ~~setMargin()~~,use `setSpace` instead.
 ##There are some other constructer methods and you can easy to create your own shape :
 
@@ -57,5 +57,6 @@ welecome to star,thank you.
   add `setMargin`method,using this method you can change the position of badgeview,but the width of bindview or the height of bindview will be changed.see image effect.
   
   *v1.1.1
+  
   add `setSpace`method,it replace origin method `setMargin`.now `setMargin` is a Deprecated method.Use `setSpace` method to set space  between view and badgeview instead.
   ***
