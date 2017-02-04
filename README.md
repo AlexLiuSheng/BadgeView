@@ -31,8 +31,16 @@ if u want to set space dont use ~~setMargin()~~,use `setSpace` instead.
 ##unbind view just use `unbind` method.
    
      badgeView.unbind();
- 
-##License
+
+##history version
+  *v1.0.6  
+  add `setMargin`method,using this method you can change the position of badgeview,but the width of bindview or the height of bindview will be changed.see image effect.
+  
+  *v1.1.1
+  
+  add `setSpace`method,it replace origin method `setMargin`.now `setMargin` is a Deprecated method.Use `setSpace` method to set space  between view and badgeview instead.
+  ***
+  ##License
         
         Copyright 2016 AllenLiu.
 
@@ -51,12 +59,3 @@ if u want to set space dont use ~~setMargin()~~,use `setSpace` instead.
         License for the specific language governing permissions and limitations under
         the License.
 welecome to star,thank you.
-
-###history version
-  *v1.0.6  
-  add `setMargin`method,using this method you can change the position of badgeview,but the width of bindview or the height of bindview will be changed.see image effect.
-  
-  *v1.1.1
-  
-  add `setSpace`method,it replace origin method `setMargin`.now `setMargin` is a Deprecated method.Use `setSpace` method to set space  between view and badgeview instead.
-  ***
