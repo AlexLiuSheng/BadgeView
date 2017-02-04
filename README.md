@@ -5,7 +5,7 @@ a BadeView  base on android
 
 ##include:
 
-      compile 'com.allenliu.badgeview:library:1.0.6'
+      compile 'com.allenliu.badgeview:library:1.1.1'（newest）
 ##bind like this:
 
     BadgeFactory.create(this)
@@ -16,8 +16,9 @@ a BadeView  base on android
     .setBadgeGravity(Gravity.Right|Gravity.Top)
     .setBadgeCount(20)
     .setShape(BadgeView.SHAPE_CIRCLE)
-    .setMargin(0,0,5,0)
-    .bind(view);
+    ~~.setMargin(0,0,5,0)~~
+    .setSpace(10,10)
+    .bind(view);
     
 ##There are some other constructer methods and you can easy to create your own shape :
 
@@ -54,4 +55,6 @@ welecome to star,thank you.
 ###history version
   *v1.0.6  
   add `setMargin`method,using this method you can change the position of badgeview,but the width of bindview or the height of bindview will be changed.see image effect.
-  ***
+  *v1.1.1
+  add `setSpace`method,it replace origin method `setMargin`.now `setMargin` is a Deprecated method.Use `setSpace` method to set space  between view and badgeview instead.
+  ***
