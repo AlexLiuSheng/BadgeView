@@ -3,10 +3,10 @@ a BadeView  base on android
 
 <img src="https://github.com/AlexLiuSheng/BadgeView/blob/master/library/version1.0.5.png" width=320/>
 
-##include:
+## include:
 
       `compile 'com.allenliu.badgeview:library:1.1.1'`（newest）
-##bind like this:
+## bind like this:
 
      BadgeFactory.create(this)
     .setTextColor(Color.White)
@@ -20,7 +20,7 @@ a BadeView  base on android
     .bind(view);
      
 if u want to set space dont use ~~setMargin()~~,use `setSpace` instead.
-##There are some other constructer methods and you can easy to create your own shape :
+## There are some other constructer methods and you can be easy to create your own shape :
 
     BadgeFactory.createDot(this).setBadgeCount(20).bind(imageView);
     BadgeFactory.createCircle(this).setBadgeCount(20).bind(imageView);
@@ -28,19 +28,18 @@ if u want to set space dont use ~~setMargin()~~,use `setSpace` instead.
     BadgeFactory.createOval(this).setBadgeCount(20).bind(imageView);
     BadgeFactory.createSquare(this).setBadgeCount(20).bind(imageView);
     BadgeFactory.createRoundRect(this).setBadgeCount(20).bind(imageView);
-##unbind view just use `unbind` method.
+## unbind view just use `unbind` method.
    
      badgeView.unbind();
 
-##history version
-  *v1.0.6  
+## history version
+  - v1.0.6  
   add `setMargin`method,using this method you can change the position of badgeview,but the width of bindview or the height of bindview will be changed.see image effect.
   
-  *v1.1.1
-  
+  - v1.1.1
   add `setSpace`method,it replace origin method `setMargin`.now `setMargin` is a Deprecated method.Use `setSpace` method to set space  between view and badgeview instead.
 
-##License
+## License
         
         Copyright 2016 AllenLiu.
 
