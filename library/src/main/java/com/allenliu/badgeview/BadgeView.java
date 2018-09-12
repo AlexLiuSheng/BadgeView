@@ -281,6 +281,7 @@ public class BadgeView extends View {
             }else{
                 containerParams.width=origionWidth+rightMargin+horiontalSpace+leftMargin;
             }
+            container.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
             container.setLayoutParams(containerParams);
 
             //setGravity
