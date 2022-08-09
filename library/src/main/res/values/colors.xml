@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="badgeviewcolorPrimary">#022C43</color>
+    <color name="badgeviewcolorPrimaryDark">#1D2733</color>
+    <color name="badgeviewcolorAccent">#022C43</color>
 </resources>

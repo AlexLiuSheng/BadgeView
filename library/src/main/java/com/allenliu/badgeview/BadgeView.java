@@ -1,5 +1,6 @@
 package com.allenliu.badgeview;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,9 +16,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 
-/**
- * Created by Allen Liu on 2016/7/15.
- */
+// Updated by Kimo Android 9/2022
+
 public class BadgeView extends View {
     /**
      * 数字paint
@@ -37,7 +37,7 @@ public class BadgeView extends View {
     private int defaultTextSize;
     private int defaultBackgroundColor = Color.RED;
     private String showText = "";
-    private int badgeGravity = Gravity.RIGHT | Gravity.TOP;
+    private int badgeGravity = Gravity.END | Gravity.TOP;
     private int leftMargin = 0;
     private int topMargin = 0;
     private int bottomMargin = 0;
@@ -90,7 +90,7 @@ public class BadgeView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        RectF rectF = new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        @SuppressLint("DrawAllocation") RectF rectF = new RectF(0, 0, getMeasuredWidth(), getMeasuredHeight());
         Paint.FontMetrics fontMetrics = numberPaint.getFontMetrics();
         float textH = fontMetrics.descent - fontMetrics.ascent;
         switch (currentShape) {
@@ -109,7 +109,7 @@ public class BadgeView extends View {
                 break;
             case SHAPE_SQUARE:
                 int sideLength = Math.min(getMeasuredHeight(), getMeasuredWidth());
-                RectF squareF = new RectF(0, 0, sideLength, sideLength);
+                @SuppressLint("DrawAllocation") RectF squareF = new RectF(0, 0, sideLength, sideLength);
                 canvas.drawRect(squareF, backgroundPaint);
                 canvas.drawText(showText, sideLength / 2f, sideLength / 2f + (textH / 2f - fontMetrics.descent), numberPaint);
                 break;
@@ -139,7 +139,6 @@ public class BadgeView extends View {
     /**
      * @param w dip
      * @param h dip this unit is dip
-     * @return
      */
     public BadgeView setWidthAndHeight(int w, int h) {
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
@@ -151,7 +150,6 @@ public class BadgeView extends View {
 
     /**
      * @param sp dip
-     * @return
      */
     public BadgeView setWidth(int sp) {
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
@@ -172,10 +170,6 @@ public class BadgeView extends View {
      * set bindview margin that you can change badges positon
      *
      * @param left   the unit is dip
-     * @param top
-     * @param right
-     * @param bottom
-     * @return
      *
      */
     @Deprecated
@@ -192,7 +186,6 @@ public class BadgeView extends View {
      *
      * @param horitontal  horitontal space  unit dp
      * @param vertical    vertical space unnit dp
-     * @return
      */
     public BadgeView setSpace(int horitontal, int vertical){
         horiontalSpace=dip2px(getContext(), horitontal);
@@ -202,7 +195,6 @@ public class BadgeView extends View {
     }
     /**
      * @param sp the unit is sp
-     * @return
      */
     public BadgeView setTextSize(int sp) {
         defaultTextSize = sp2px(getContext(), sp);
@@ -239,8 +231,6 @@ public class BadgeView extends View {
     /**
      * set gravity must be before @link bind() method
      *
-     * @param gravity
-     * @return
      */
     public BadgeView setBadgeGravity(int gravity) {
         badgeGravity = gravity;
@@ -255,7 +245,7 @@ public class BadgeView extends View {
             ((ViewGroup) getParent()).removeView(this);
         if (view == null)
             return this;
-        if ((view.getParent() instanceof FrameLayout)&&hasBind==true) {
+        if ((view.getParent() instanceof FrameLayout)&& hasBind) {
             ((FrameLayout) view.getParent()).addView(this);
             return this;
         } else if (view.getParent() instanceof ViewGroup) {
@@ -285,21 +275,21 @@ public class BadgeView extends View {
 
             //setGravity
             FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) getLayoutParams();
-            if(params.gravity==(Gravity.RIGHT|Gravity.TOP)||params.gravity==Gravity.RIGHT||params.gravity==Gravity.TOP){
+            if(params.gravity==(Gravity.END|Gravity.TOP)||params.gravity==Gravity.END||params.gravity==Gravity.TOP){
                 view.setPadding(0,verticalSpace,horiontalSpace,0);
-                viewLayoutParams.gravity=Gravity.LEFT|Gravity.BOTTOM;
-            }else if(params.gravity==(Gravity.LEFT|Gravity.TOP)||params.gravity==Gravity.LEFT||params.gravity==Gravity.TOP){
+                viewLayoutParams.gravity=Gravity.START|Gravity.BOTTOM;
+            }else if(params.gravity == (Gravity.START | Gravity.TOP) || params.gravity == Gravity.START){
                 view.setPadding(horiontalSpace,verticalSpace,0,0);
-                viewLayoutParams.gravity=Gravity.RIGHT|Gravity.BOTTOM;
-            }else if(params.gravity==(Gravity.LEFT|Gravity.BOTTOM)){
+                viewLayoutParams.gravity=Gravity.END|Gravity.BOTTOM;
+            }else if(params.gravity==(Gravity.START|Gravity.BOTTOM)){
                 view.setPadding(horiontalSpace,0,0,verticalSpace);
-                viewLayoutParams.gravity=Gravity.RIGHT|Gravity.TOP;
-            }else if(params.gravity==(Gravity.RIGHT|Gravity.BOTTOM)){
+                viewLayoutParams.gravity=Gravity.END|Gravity.TOP;
+            }else if(params.gravity==(Gravity.END|Gravity.BOTTOM)){
                 view.setPadding(0,0,horiontalSpace,verticalSpace);
-                viewLayoutParams.gravity=Gravity.LEFT|Gravity.TOP;
+                viewLayoutParams.gravity=Gravity.START|Gravity.TOP;
             }else{
                 view.setPadding(0,verticalSpace,horiontalSpace,0);
-                viewLayoutParams.gravity=Gravity.LEFT|Gravity.BOTTOM;
+                viewLayoutParams.gravity=Gravity.START|Gravity.BOTTOM;
             }
 
             view.setLayoutParams(viewLayoutParams);
@@ -330,3 +320,4 @@ public class BadgeView extends View {
         return showText;
     }
 }
+// Updated by Kimo Android 9/2022

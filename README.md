@@ -5,7 +5,8 @@ a BadeView  base on android
 
 ## include:
 
-      `compile 'com.allenliu.badgeview:library:1.1.1'`（newest）
+      `implementation 'com.allenliu.badgeview:library:1.1.1'`
+
 ## bind like this:
 
      BadgeFactory.create(this)
