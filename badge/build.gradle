@@ -50,9 +50,9 @@ group = "com.enceptcode.badgeview" // Maven Group ID for the artifact，一般�
 //                }
 //                developers {
 //                    developer {
-//                        id 'liusheng'    //填写的一些基本信息
-//                        name 'AllenLiu'
-//                        email '29949821@qq.com'
+//                        id 'kimoandroid'    //填写的一些基本信息
+//                        name 'KimoAndroid'
+//                        email 'kimospprt@gmail.com'
 //                    }
 //                }
 //                scm {
@@ -85,8 +85,8 @@ artifacts {
     archives sourcesJar
 }
 
-//Properties properties = new Properties()
-//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 //bintray {
 //    user = properties.getProperty("bintray.user")
 //    key = properties.getProperty("bintray.apikey")
