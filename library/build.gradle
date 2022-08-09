@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'com.github.dcendents.android-maven'
-//apply plugin: 'com.jfrog.bintray'
 version="1.0.7"
 
 android {
@@ -30,8 +28,8 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-def siteUrl = 'https://github.com/AlexLiuSheng/BadgeView' // 项目的主页
-def gitUrl = 'https://github.com/AlexLiuSheng/BadgeView.git' // Git仓库的url
+def siteUrl = 'https://github.com/kimoandroid/Smart-BadgeView' // 项目的主页
+def gitUrl = 'https://github.com/kimoandroid/Smart-BadgeView.git' // Git仓库的url
 group = "com.enceptcode.badgeview" // Maven Group ID for the artifact，一般填你唯一的包名
 
 //install {
@@ -102,3 +100,4 @@ artifacts {
 //        publish = true
 //    }
 //}
+
