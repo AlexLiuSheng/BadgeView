@@ -1,4 +1,4 @@
-package com.allenliu.badgeview;
+package com.enceptcode.badgeview;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

@@ -32,7 +32,7 @@ dependencies {
 
 def siteUrl = 'https://github.com/AlexLiuSheng/BadgeView' // 项目的主页
 def gitUrl = 'https://github.com/AlexLiuSheng/BadgeView.git' // Git仓库的url
-group = "com.allenliu.badgeview" // Maven Group ID for the artifact，一般填你唯一的包名
+group = "com.enceptcode.badgeview" // Maven Group ID for the artifact，一般填你唯一的包名
 
 //install {
 //    repositories.mavenInstaller {

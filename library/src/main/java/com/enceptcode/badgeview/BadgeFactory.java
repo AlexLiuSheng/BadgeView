@@ -1,9 +1,9 @@
-package com.allenliu.badgeview;
+package com.enceptcode.badgeview;
 
 import android.content.Context;
 import android.view.Gravity;
 
-import com.allenliu.badgeview.BadgeView;
+import com.enceptcode.badgeview.BadgeView;
 
 import static java.security.AccessController.getContext;
 
