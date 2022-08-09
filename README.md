@@ -5,7 +5,7 @@ a BadeView  base on android
 
 ## include:
 
-      `implementation 'com.allenliu.badgeview:library:1.1.1'`
+      `implementation 'com.enceptcode.badgeview:library:1.1.1'`
 
 ## bind like this:
 
