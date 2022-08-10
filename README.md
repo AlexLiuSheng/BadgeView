@@ -1,5 +1,7 @@
-# BadgeView
-a BadeView  base on android
+# Smart BadgeView
+
+[![](https://jitpack.io/v/kimoandroid/Smart-BadgeView.svg)](https://jitpack.io/#kimoandroid/Smart-BadgeView)
+
 
 <img src="https://github.com/AlexLiuSheng/BadgeView/blob/master/library/version1.0.5.png" width=320/>
 
