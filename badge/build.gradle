@@ -4,7 +4,7 @@ version="1.0.7"
 android {
 
     compileSdk 33
-    buildToolsVersion '33.0.0'
+    buildToolsVersion '30.0.3'
     resourcePrefix "badgeview"
     defaultConfig {
         minSdk 20
@@ -100,7 +100,3 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 //        publish = true
 //    }
 //}
-
-dependencies {
-    implementation 'com.github.kimoandroid:Smart-BadgeView:1.0.7'
-}

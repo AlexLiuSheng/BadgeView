@@ -3,9 +3,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
-        maven { url = uri("https://storage.googleapis.com/r8-releases/raw") }
-        maven { url 'https://repo1.maven.org/maven2' }
     }
 
 
@@ -19,6 +16,7 @@ buildscript {
 allprojects {
     repositories {
         mavenCentral()
+        google()
     }
 }
 
