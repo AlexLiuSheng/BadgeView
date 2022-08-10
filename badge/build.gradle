@@ -101,3 +101,6 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 //    }
 //}
 
+dependencies {
+    implementation 'com.github.kimoandroid:Smart-BadgeView:1.0.7'
+}
