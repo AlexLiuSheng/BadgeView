@@ -13,7 +13,7 @@ Display a badgeView on any view with RealTime Update.
 Add This Line To your build.gradle (lastest v1.0.9):
 ```java
 dependencies {
-    implementation 'com.enceptcode.badgeview:badge:1.0.9'
+    implementation 'com.github.kimoandroid:Smart-BadgeView:1.0.9'
 }
 ```
 
