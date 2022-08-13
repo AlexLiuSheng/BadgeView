@@ -2,7 +2,7 @@
 Display a badgeView on any view with RealTime Update.
 
 
-[![](https://jitpack.io/v/kimoandroid/Smart-BadgeView.svg)](https://jitpack.io/#kimoandroid/Smart-BadgeView)
+[![](https://jitpack.io/v/kimoandroid/RealTime-BadgeView.svg)](https://jitpack.io/#kimoandroid/RealTime-BadgeView)
 
 ## Screenshot:
 <img src="https://user-images.githubusercontent.com/69405523/183925269-305f8081-b372-40e1-8e7c-7b57d36d0d1f.jpg" width=320/>
