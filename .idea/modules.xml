@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Smart-BadgeView.iml" filepath="$PROJECT_DIR$/.idea/modules/Smart-BadgeView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/badge/Smart-BadgeView.badge.iml" filepath="$PROJECT_DIR$/.idea/modules/badge/Smart-BadgeView.badge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/badge/Smart-BadgeView.badge.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/badge/Smart-BadgeView.badge.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/badge/Smart-BadgeView.badge.main.iml" filepath="$PROJECT_DIR$/.idea/modules/badge/Smart-BadgeView.badge.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/badge/Smart-BadgeView.badge.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/badge/Smart-BadgeView.badge.unitTest.iml" />
+    </modules>
+  </component>
+</project>
