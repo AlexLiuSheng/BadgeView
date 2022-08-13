@@ -10,10 +10,10 @@ Display a badgeView on any view with RealTime Update.
 
 ## Step.1 Library implementation:
 
-Add This Line To your build.gradle (lastest v1.0.8):
+Add This Line To your build.gradle (lastest v1.0.9):
 ```java
 dependencies {
-    implementation 'com.enceptcode.badgeview:badge:1.0.8'
+    implementation 'com.enceptcode.badgeview:badge:1.0.9'
 }
 ```
 
